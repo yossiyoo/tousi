@@ -1,0 +1,29 @@
+```html name=withdraw.html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出金サイト</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="withdraw.js"></script>
+</head>
+<body>
+    <header>
+        <h1>出金サイトへようこそ</h1>
+    </header>
+    <main>
+        <section id="withdraw-section">
+            <h2>出金フォーム</h2>
+            <form id="withdraw-form">
+                <label for="withdraw-amount">出金金額:</label>
+                <input type="number" id="withdraw-amount" name="withdraw-amount" value="35000" min="35000" required>
+                <button type="submit">出金</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 出金サイト</p>
+    </footer>
+</body>
+</html>
