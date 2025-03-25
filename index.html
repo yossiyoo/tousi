@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投資シミュレーション</title>
+    <title>Investment Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        canvas {
+        #chart-container {
+            width: 80%;
             max-width: 600px;
-            margin: 20px auto;
         }
     </style>
 </head>
 <body>
-    <h1>投資シミュレーション</h1>
-    <canvas id="investmentChart"></canvas>
-
-    <script src="script.js"></script>
+    <div id="chart-container">
+        <canvas id="investmentChart"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('investmentChart').getContext('2d');
+        const investmentChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Investment Growth',
+                    data: [100, 120, 140, 160, 180, 200, 220],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
