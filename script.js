@@ -14,15 +14,7 @@ const generateRandomData = (start, end) => {
 };
 
 const updateChart = () => {
-    let data;
-    if (currentStep === 0) {
-        data = generateRandomData(100000, 135000);
-    } else if (currentStep === 1) {
-        currentInvestment -= 35000;
-        initialInvestment = 1000000;
-        currentInvestment = initialInvestment;
-        data = generateRandomData(1000000, 2430000);
-    }
+    let data = generateRandomData(100000, 135000);
     chart.data.datasets[0].data = data;
     chart.update();
 };
@@ -32,7 +24,7 @@ const chart = new Chart(ctx, {
     data: {
         labels: Array.from({ length: 10 }, (_, i) => i + 1),
         datasets: [{
-            label: 'Investment Value',
+            label: '投資価値',
             data: generateRandomData(100000, 135000),
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 2,
@@ -45,14 +37,14 @@ const chart = new Chart(ctx, {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Time'
+                    text: '時間'
                 }
             },
             y: {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Value'
+                    text: '価値'
                 }
             }
         }
