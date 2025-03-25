@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チャート表示ウェブサイト</title>
+    <title>Investment Simulation</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -13,79 +13,20 @@
         }
         canvas {
             max-width: 600px;
-            margin: auto;
+            margin: 20px auto;
         }
         button {
-            margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>チャート表示ウェブサイト</h1>
-    <canvas id="myChart"></canvas>
-    <button id="nextButton">次へ</button>
+    <h1>Investment Simulation</h1>
+    <canvas id="investmentChart"></canvas>
+    <button id="nextStep">次へ</button>
 
-    <script>
-        let chart;
-        let step = 0;
-
-        const nextButton = document.getElementById('nextButton');
-        nextButton.addEventListener('click', handleNext);
-
-        function handleNext() {
-            if (step === 0) {
-                displayChart(100000, 135000);
-                alert('35000円が出金されました');
-                step++;
-            } else if (step === 1) {
-                displayChart(1000000, 2430000);
-                step++;
-            } else {
-                alert('これ以上のステップはありません');
-            }
-        }
-
-        function displayChart(startAmount, endAmount) {
-            const labels = Array.from({ length: 10 }, (_, i) => `Day ${i + 1}`);
-            const data = generateRandomData(startAmount, endAmount, labels.length);
-
-            const ctx = document.getElementById('myChart').getContext('2d');
-            if (chart) {
-                chart.destroy();
-            }
-            chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: '金額',
-                        data: data,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: false,
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-
-        function generateRandomData(start, end, length) {
-            const data = [];
-            const step = (end - start) / (length - 1);
-            for (let i = 0; i < length; i++) {
-                data.push(start + step * i + (Math.random() - 0.5) * step);
-            }
-            return data;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
